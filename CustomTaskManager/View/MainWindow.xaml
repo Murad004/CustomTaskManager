@@ -1,0 +1,80 @@
+﻿<Window x:Class="CustomTaskManager.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:CustomTaskManager"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="450" Width="900">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition></ColumnDefinition>
+            <ColumnDefinition Width="1.5*"></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="7*"></RowDefinition>
+            <RowDefinition></RowDefinition>
+        </Grid.RowDefinitions>
+
+        <ListBox Background="White" Foreground="Black" FontSize="26" Name="BlackBoxListBox" Grid.Row="0" Grid.Column="0">
+        </ListBox>
+
+        <ListView SelectedItem="{Binding SelectedProcess}" Name="ProcessListView" FontSize="22" Foreground="White" Grid.Row="0" Grid.Column="1" Background="Gray">
+            <ListView.View>
+                <GridView>
+                    <GridViewColumn Header="Id" Width="100">
+                        <GridViewColumn.CellTemplate>
+                            <DataTemplate>
+                                <TextBlock FontSize="22" Text="{Binding Path=Id}"></TextBlock>
+                            </DataTemplate>
+                        </GridViewColumn.CellTemplate>
+                    </GridViewColumn>
+                    <GridViewColumn Header="Name" Width="100">
+                        <GridViewColumn.CellTemplate>
+                            <DataTemplate>
+                                <TextBlock FontSize="22" Text="{Binding Path=ProcessName}"></TextBlock>
+                            </DataTemplate>
+                        </GridViewColumn.CellTemplate>
+                    </GridViewColumn>
+                    <GridViewColumn Header="Handle" Width="100">
+                        <GridViewColumn.CellTemplate>
+                            <DataTemplate>
+                                <TextBlock FontSize="22" Text="{Binding Path=HandleCount}"></TextBlock>
+                            </DataTemplate>
+                        </GridViewColumn.CellTemplate>
+
+                    </GridViewColumn>
+                    <GridViewColumn Header="Thread" Width="100">
+                        <GridViewColumn.CellTemplate>
+                            <DataTemplate>
+                                <TextBlock FontSize="22" Text="{Binding Path=Threads.Count}"></TextBlock>
+                            </DataTemplate>
+                        </GridViewColumn.CellTemplate>
+
+                    </GridViewColumn>
+                    <GridViewColumn Header="Machine" Width="100">
+                        <GridViewColumn.CellTemplate>
+                            <DataTemplate>
+                                <TextBlock FontSize="22" Text="{Binding Path=MachineName}"></TextBlock>
+                            </DataTemplate>
+                        </GridViewColumn.CellTemplate>
+
+                    </GridViewColumn>
+                </GridView>
+            </ListView.View>
+        </ListView>
+
+        <StackPanel Grid.Row="1" Grid.Column="1" Orientation="Horizontal">
+            <TextBox Name="ProcesstxtBox" Width="200" Height="30" Margin="10" FontSize="22"></TextBox>
+            <Button Command="{Binding CreateCommand}" Name="CreateBtn" Width="100" Height="40" FontSize="22" Background="WhiteSmoke" Margin="30,0,0,0">Create</Button>
+            <Button Command="{Binding EndCommand}" Name="EndBtn" Width="100" Height="40" FontSize="22" Background="WhiteSmoke" Margin="30,0,0,0">End</Button>
+        </StackPanel>
+
+        <StackPanel Orientation="Horizontal" Grid.Row="1">
+            <TextBox Name="BlackBoxtxtBox" Width="200" Height="30" Margin="10" FontSize="22"></TextBox>
+            <Button Command="{Binding AddCommand}" Name="AddBtn" Width="100" Height="40" FontSize="22" Background="WhiteSmoke" Margin="0,0,0,0">Add</Button>
+        </StackPanel>
+
+
+    </Grid>
+</Window>
